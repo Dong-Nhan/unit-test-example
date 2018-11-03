@@ -10,6 +10,7 @@ describe("Operator Testing", function () {
   it('should return the sum of 2 numbers', () => {
     //assert.strictEqual(plus(4, 5), 9);
     plus(4, 5).should.equal(9);
+    plus(3,4).should.equal(7);
   })
 })
 
