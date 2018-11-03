@@ -1,4 +1,5 @@
 const app = require('../app.controller');
+const assert = require('assert');
 
 const expect = require('chai').expect;
 const should = require('chai').should();
@@ -24,21 +25,23 @@ describe('App test', function () {
   })
 
   //synchronous test case
-  it('plus() should return correct sum', function() {
+  it('plus() should return correct sum', function () {
     let result = app.plus(3, 5);
     expect(result, 'The sum of two number should be correct').to.be.a('Number').to.equal(8);
   })
 
 })
 
-describe('App 2nd test', function() {
+describe('App 2nd test', function () {
   //spy the callback
   it('Callback of readJsonFile() should be called once', function () {
     let callbackOnSpy = sinon.spy();
     app.readJsonFile('myJsonFile.json', callbackOnSpy);
-    //using should interface of Chai library
-    expect(callbackOnSpy.called).to.be.true;
-    //(callbackOnSpy.calledOnce).should.be.true;
+    //setTimeout to wait for the callback
+    setTimeout(() => {
+      //using should interface of Chai library
+      (callbackOnSpy.calledOnce).should.be.true;
+    }, 1800);
   })
 })
 
